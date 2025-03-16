@@ -12,7 +12,7 @@ export default function BlogDetail() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <PageTitle />
+      <PageTitle title={""} />
 
       <section className="bg0 p-t-52 p-b-20">
         <div className="container">

@@ -1,12 +1,15 @@
-"use client"; 
+"use client";
+import { useState, useEffect } from "react";
 import React from "react";
-import { useRouter } from "next/navigation"; 
+import { useRouter, useSearchParams } from "next/navigation";
 
-const CategoryPicker: React.FC = () => {
+export default function CategoryPicker() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const genderFilter = searchParams.get("gender");
 
-  const handleCategoryClick = (category: string) => {
-    router.push(`/shop?category=${category}`);
+  const handleCategoryClick = (gender: string) => {
+    router.push(`/shop?gender=${gender}`);
   };
 
   return (
@@ -16,12 +19,14 @@ const CategoryPicker: React.FC = () => {
           <div className="block1 wrap-pic-w">
             <img src="/images/banner-04.jpg" alt="IMG-BANNER" />
             <button
-              className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
+              className={`block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3 ${
+                genderFilter === "women" ? "how-active1" : ""
+              }`}
               onClick={() => handleCategoryClick("women")}
             >
               <div className="block1-txt-child1 flex-col-l">
                 <span className="block1-name ltext-102 trans-04 p-b-8">
-                  Woman
+                  Women
                 </span>
                 <span className="block1-info stext-102 trans-04">
                   Spring 2022
@@ -40,8 +45,10 @@ const CategoryPicker: React.FC = () => {
           <div className="block1 wrap-pic-w">
             <img src="/images/banner-05.jpg" alt="IMG-BANNER" />
             <button
-              className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
-              onClick={() => handleCategoryClick("men")}
+              className={`block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3 ${
+                genderFilter === "man" ? "how-active1" : ""
+              }`}
+              onClick={() => handleCategoryClick("man")}
             >
               <div className="block1-txt-child1 flex-col-l">
                 <span className="block1-name ltext-102 trans-04 p-b-8">
@@ -62,6 +69,4 @@ const CategoryPicker: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default CategoryPicker;
+}

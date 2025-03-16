@@ -4,6 +4,7 @@ import Banner from "@/components/Banner";
 import CategoryPicker from "@/components/CategoryPicker";
 import FeaturedBlogs from "@/components/FeaturedBlogs";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export default function Home() {
   return (
